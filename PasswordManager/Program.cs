@@ -9,7 +9,7 @@ namespace PasswordManager
         {
             Methods.StartUp();
             var cont = true;
-            var choice = "";
+            string choice;
             Modules.Welcome();
             do
             {
