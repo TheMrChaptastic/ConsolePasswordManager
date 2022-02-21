@@ -10,14 +10,14 @@ namespace PasswordManager.Tests
         {
             var parser = new Parser();
             //Act
-            var actual = parser.Parse("fake company,chappy@themrchaptastic.com,wowieskldfjd,false,false,12");
+            var actual = parser.Parse("fake company,fake@email.com,wowieskldfjd,false,false,12");
             //Assert
             Assert.NotNull(actual);
         }
 
         [Theory]
-        [InlineData("fake company,chappy@themrchaptastic.com,wowieskldfjd,false,false,12", "fake company")]
-        [InlineData("fake company 2, chappy@themrchaptastic.com, wowieskdfjdk, false, false, 12", "fake company 2")]
+        [InlineData("fake company,fake@email.com,wowieskldfjd,false,false,12", "fake company")]
+        [InlineData("fake company 2, fake@email.com, wowieskdfjdk, false, false, 12", "fake company 2")]
         public void ShouldParseService(string line, string expected)
         {
             var parser = new Parser();
@@ -28,8 +28,8 @@ namespace PasswordManager.Tests
         }
 
         [Theory]
-        [InlineData("fake company,chappy@themrchaptastic.com,wowieskldfjd,false,false,12", "chappy@themrchaptastic.com")]
-        [InlineData("fake company 2,chappy@themrchaptastic.com,wowieskdfjdk,false,false,12", "chappy@themrchaptastic.com")]
+        [InlineData("fake company,fake@email.com,wowieskldfjd,false,false,12", "fake@email.com")]
+        [InlineData("fake company 2,fake@email.com,wowieskdfjdk,false,false,12", "fake@email.com")]
         public void ShouldParseEmail(string line, string expected)
         {
             var parser = new Parser();
@@ -40,8 +40,8 @@ namespace PasswordManager.Tests
         }
 
         [Theory]
-        [InlineData("fake company,chappy@themrchaptastic.com,wowieskldfjd,false,false,12", "wowieskldfjd")]
-        [InlineData("fake company 2,chappy@themrchaptastic.com,wowieskdfjdk,false,false,12", "wowieskdfjdk")]
+        [InlineData("fake company,fake@email.com,wowieskldfjd,false,false,12", "wowieskldfjd")]
+        [InlineData("fake company 2,fake@email.com,wowieskdfjdk,false,false,12", "wowieskdfjdk")]
         public void ShouldParsePassword(string line, string expected)
         {
             var parser = new Parser();
@@ -52,8 +52,8 @@ namespace PasswordManager.Tests
         }
 
         [Theory]
-        [InlineData("fake company,chappy@themrchaptastic.com,wowieskldfjd,false,false,12", false)]
-        [InlineData("fake company 2, chappy@themrchaptastic.com, wowieskdfjdk, false, false, 12", false)]
+        [InlineData("fake company,fake@email.com,wowieskldfjd,false,false,12", false)]
+        [InlineData("fake company 2, fake@email.com, wowieskdfjdk, false, false, 12", false)]
         public void ShouldParseSChar(string line, bool expected)
         {
             var parser = new Parser();
@@ -64,8 +64,8 @@ namespace PasswordManager.Tests
         }
 
         [Theory]
-        [InlineData("fake company,chappy@themrchaptastic.com,wowieskldfjd,false,false,12", false)]
-        [InlineData("fake company 2, chappy@themrchaptastic.com, wowieskdfjdk, false, false, 12", false)]
+        [InlineData("fake company,fake@email.com,wowieskldfjd,false,false,12", false)]
+        [InlineData("fake company 2, fake@email.com, wowieskdfjdk, false, false, 12", false)]
         public void ShouldParseUCase(string line, bool expected)
         {
             var parser = new Parser();
@@ -76,8 +76,8 @@ namespace PasswordManager.Tests
         }
 
         [Theory]
-        [InlineData("fake company,chappy@themrchaptastic.com,wowieskldfjd,false,false,12", 12)]
-        [InlineData("fake company 2, chappy@themrchaptastic.com, wowieskdfjdk, false, false, 12", 12)]
+        [InlineData("fake company,fake@email.com,wowieskldfjd,false,false,12", 12)]
+        [InlineData("fake company 2, fake@email.com, wowieskdfjdk, false, false, 12", 12)]
         public void ShouldParseLength(string line, int expected)
         {
             var parser = new Parser();
